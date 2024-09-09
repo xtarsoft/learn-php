@@ -1,4 +1,4 @@
 </div>
-<?php require __DIR__ . '/../../partials/plugin.php'; ?>
+<?php require viewPath('partials/plugin.php') ?>
 </body>
 </html>

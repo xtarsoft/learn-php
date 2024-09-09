@@ -1,3 +1,3 @@
-<?php require __DIR__ . '/../../partials/head.php'; ?>
-<?php require __DIR__ . '/../../partials/nav.php'; ?>
-<?php require __DIR__ . '/../../partials/banner.php'; ?>
+<?php require viewPath('/partials/head.php') ?>
+<?php require viewPath('partials/nav.php') ?>
+<?php require viewPath('partials/banner.php') ?>
