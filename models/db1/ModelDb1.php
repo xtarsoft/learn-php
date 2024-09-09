@@ -12,6 +12,6 @@ class ModelDb1 extends Database
     {
         $app_config = require rootPath('/config/database.php');
         $this->config = $app_config['app'];
-        parent::__construct($this->config['db'], $this->config['engine'], $this->config['secret']['username'], $this->config['secret']['password']);
+        parent::__construct($this->config['config'], $this->config['engine'], $this->config['secret']['username'], $this->config['secret']['password']);
     }
 }

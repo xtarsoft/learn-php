@@ -1,8 +1,8 @@
 <?php
 return [
     'app' => [
-        'engine' => 'mysql:',
-        'db' => [
+        'engine' => 'mysql',
+        'config' => [
             'host' => 'localhost',
             'port' => 3306,
             'dbname' => 'app',
