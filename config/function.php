@@ -1,5 +1,6 @@
 <?php
 
+use Core\Response;
 use JetBrains\PhpStorm\NoReturn;
 
 function dd($value): void
@@ -42,22 +43,14 @@ function uriIs($uri): bool
 {
     return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === $uri;
 }
-
-#[NoReturn] function abort($code = 404): void
+function auth($condition,$status = Response::FORBIDDEN): void
 {
-    $title = match ($code) {
-        404 => '404 Not Found',
-        403 => '403 Forbidden',
-        500 => '500 Internal Server Error',
-        default => 'Error',
-    };
-    http_response_code($code);
+    if ($condition) {
+        Response::abort($status);
 
-    require view($code,'errors');
-
-    die();
+    }
+    return;
 }
-
 function route($uri, $routes): void
 {
     if (array_key_exists($uri, $routes)) {
@@ -65,7 +58,7 @@ function route($uri, $routes): void
         $controller = explode('@', $controller);
         require base_path("/controllers/{$controller[0]}.php");
     } else {
-        abort();
+        Response::abort();
     }
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace models\db1;
+namespace Models\db1;
 
 
 class Posts extends ModelDb1

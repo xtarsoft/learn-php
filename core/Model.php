@@ -1,8 +1,8 @@
 <?php
 
-namespace core;
+namespace Core;
 
-use database\sql\Database;
+use Database\Sql\Database;
 
 class Model extends Database
 {
@@ -22,7 +22,7 @@ class Model extends Database
 
     public function find($id): false|array
     {
-        return $this->query('WHERE id = :id', ['id' => $id])->first();
+        return $this->query('WHERE id = :id', ['id' => $id])->findOrFail();
     }
 
     public function where($key, $value): Model

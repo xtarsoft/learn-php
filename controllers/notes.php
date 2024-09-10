@@ -2,7 +2,7 @@
 
 $title = 'Notes Page';
 
-$model = new models\Notes();
+$model = new Models\Notes();
 $notes = $model->all();
 
 include view('notes');

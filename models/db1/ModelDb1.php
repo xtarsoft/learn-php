@@ -1,8 +1,8 @@
 <?php
 
-namespace models\db1;
+namespace Models\db1;
 
-use database\sql\Database;
+use Database\Sql\Database;
 
 class ModelDb1 extends Database
 {

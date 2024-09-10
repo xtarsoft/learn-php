@@ -1,7 +1,8 @@
 <?php
 
-namespace database\sql;
+namespace Database\Sql;
 
+use Core\Response;
 use PDO;
 
 class Database
@@ -43,5 +44,14 @@ class Database
     public function first()
     {
         return $this->statement->fetch();
+    }
+
+    public function findOrFail()
+    {
+        $data = $this->statement->fetch();
+        if (!$data){
+            Response::abort(Response::NOT_FOUND);
+        }
+        return $data;
     }
 }

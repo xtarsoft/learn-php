@@ -1,8 +1,8 @@
 <?php
 
-namespace models;
+namespace Models;
 
-use core\Model;
+use Core\Model;
 
 class Notes extends Model
 {
