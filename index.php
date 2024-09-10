@@ -3,4 +3,4 @@
 
 require __DIR__ . '/config/app.php';
 
-require rootPath('/routes/web.php');
+require base_path('/routes/web.php');

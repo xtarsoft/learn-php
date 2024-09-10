@@ -1,10 +1,10 @@
 <?php
 
-namespace models\db1;
+namespace core;
 
 use database\sql\Database;
 
-class ModelDb1 extends Database
+class Model extends Database
 {
     protected mixed $config;
 

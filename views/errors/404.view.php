@@ -1,4 +1,4 @@
-<?php include viewPath('layouts/error/head.php') ?>
+<?php include view_path('layouts/error/head.php') ?>
 
 <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -9,4 +9,4 @@
     </div>
 </main>
 
-<?php include viewPath('layouts/error/footer.php') ?>
+<?php include view_path('layouts/error/footer.php') ?>
