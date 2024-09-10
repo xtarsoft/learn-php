@@ -14,4 +14,19 @@ class Model extends Database
         $this->config = $app_config['app'];
         parent::__construct($this->config['config'], $this->config['engine'], $this->config['secret']['username'], $this->config['secret']['password']);
     }
+
+    public function all(): false|array
+    {
+        return $this->query()->get();
+    }
+
+    public function find($id): false|array
+    {
+        return $this->query('WHERE id = :id', ['id' => $id])->get();
+    }
+
+    public function where($key, $value): Model
+    {
+        return $this->query("WHERE {$key} = :{$key}", [$key => $value]);
+    }
 }

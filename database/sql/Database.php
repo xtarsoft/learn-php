@@ -7,6 +7,8 @@ use PDO;
 class Database
 {
     public PDO $connection;
+    protected $table;
+    protected $statement;
 
     public function __construct($config,$service,$username = 'root',$password = '')
     {
@@ -18,21 +20,24 @@ class Database
     }
 
     /**
-     * @param $table
      * @param $condition
      * @param $param
-     * @return false|array
+     * @return Database
      */
-    public function query($table , $condition = null, $param = null): false|array
+    public function query($condition = null, $param = null): Database
     {
         if ($condition){
-            $stmt = $this->connection->prepare("SELECT * FROM {$table} {$condition}");
-            $stmt->execute($param);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $this->statement = $this->connection->prepare("SELECT * FROM {$this->table} {$condition}");
+            $this->statement->execute($param);
+            return $this;
 
         }
-        $stmt = $this->connection->prepare("SELECT * FROM {$table}");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->statement = $this->connection->prepare("SELECT * FROM {$this->table}");
+        $this->statement->execute();
+        return $this;
+    }
+    public function get()
+    {
+        return $this->statement->fetchAll();
     }
 }
