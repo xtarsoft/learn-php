@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\NoReturn;
+
 function dd($value): void
 {
     echo '<pre>';
@@ -40,10 +43,11 @@ function uriIs($uri): bool
     return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === $uri;
 }
 
-function abort($code = 404): void
+#[NoReturn] function abort($code = 404): void
 {
     $title = match ($code) {
         404 => '404 Not Found',
+        403 => '403 Forbidden',
         500 => '500 Internal Server Error',
         default => 'Error',
     };
