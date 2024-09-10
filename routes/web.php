@@ -5,6 +5,7 @@ $routes = [
     '/' => 'index@controller',
     '/about' => 'about@controller',
     '/notes' => 'notes@controller',
+    '/note' => 'note@controller',
     '/contact' => 'contact@controller',
 ];
 

@@ -24,7 +24,7 @@ class Database
      * @param $param
      * @return Database
      */
-    public function query($condition = null, $param = null): Database
+    public function query($condition = null, $param = null): static
     {
         if ($condition){
             $this->statement = $this->connection->prepare("SELECT * FROM {$this->table} {$condition}");
@@ -39,5 +39,9 @@ class Database
     public function get()
     {
         return $this->statement->fetchAll();
+    }
+    public function first()
+    {
+        return $this->statement->fetch();
     }
 }
