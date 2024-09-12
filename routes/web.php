@@ -6,6 +6,7 @@ $routes = [
     '/about' => 'about@controller',
     '/notes' => 'notes@controller',
     '/note' => 'note@controller',
+    '/notes/create' => 'notes-create@controller',
     '/contact' => 'contact@controller',
 ];
 
