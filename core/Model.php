@@ -17,17 +17,28 @@ class Model extends Database
 
     public function all(): false|array
     {
-        return $this->query()->get();
+        return $this->query("SELECT * FROM {$this->table} ")->get();
     }
 
     public function find($id): false|array
     {
-        return $this->query('WHERE id = :id', ['id' => $id])->findOrFail();
+        return $this->query("SELECT * FROM {$this->table} ", 'WHERE id = :id', ['id' => $id])->findOrFail();
     }
 
     public function where($key, $value): Model
     {
-        return $this->query("WHERE {$key} = :{$key}", [$key => $value]);
+        return $this->query("SELECT * FROM {$this->table} ","WHERE {$key} = :{$key}", [$key => $value]);
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function create(array $data): void
+    {
+        $keys = implode(',', array_keys($data));
+        $values = implode(',', array_map(fn($key) => ":{$key}", array_keys($data)));
+        $this->query("INSERT INTO {$this->table} ({$keys}) VALUES ({$values})", null, $data);
     }
     public function oneToOne($table, $foreign_key): Model
     {
