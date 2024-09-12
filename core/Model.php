@@ -38,7 +38,7 @@ class Model extends Database
     {
         $keys = implode(',', array_keys($data));
         $values = implode(',', array_map(fn($key) => ":{$key}", array_keys($data)));
-        $this->query("INSERT INTO {$this->table} ({$keys}) VALUES ({$values})", null, $data);
+        $this->query("INSERT INTO {$this->table}", "({$keys}) VALUES ({$values})", $data);
     }
     public function oneToOne($table, $foreign_key): Model
     {

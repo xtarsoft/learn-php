@@ -32,7 +32,6 @@ class Database
             $this->statement = $this->connection->prepare($query . $condition);
             $this->statement->execute($param);
             return $this;
-
         }
         $this->statement = $this->connection->prepare($query);
         $this->statement->execute();
