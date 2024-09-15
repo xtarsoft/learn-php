@@ -6,10 +6,10 @@ use JetBrains\PhpStorm\NoReturn;
 
 class Response
 {
-    const SUCCESS = 200;
-    const NOT_FOUND = 404;
-    const FORBIDDEN = 403;
-    const INTERNAL_SERVER_ERROR = 500;
+    public const SUCCESS = 200;
+    public const NOT_FOUND = 404;
+    public const FORBIDDEN = 403;
+    public const INTERNAL_SERVER_ERROR = 500;
 
     #[NoReturn] public static function abort($code = 404): void
     {
