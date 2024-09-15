@@ -34,7 +34,8 @@ function view_path($path = ''): string
 
 function view($file = 'index',$options = ''): string
 {
-    $file = $file . '.view.php';
+    $name = basename($file);
+    $file = $name . '.view.php';
     $viewPath = view_path($options);
     return $viewPath . DIRECTORY_SEPARATOR . ltrim($file, DIRECTORY_SEPARATOR);
 }
