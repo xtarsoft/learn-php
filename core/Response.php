@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use JetBrains\PhpStorm\NoReturn;
-
 class Response
 {
     public const SUCCESS = 200;
@@ -11,7 +9,7 @@ class Response
     public const FORBIDDEN = 403;
     public const INTERNAL_SERVER_ERROR = 500;
 
-    #[NoReturn] public static function abort($code = 404): void
+    public static function abort($code = 404): void
     {
         $allowedCodes = [404, 403, 500];
         $code = basename($code);
