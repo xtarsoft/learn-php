@@ -9,6 +9,10 @@ class Response
     public const FORBIDDEN = 403;
     public const INTERNAL_SERVER_ERROR = 500;
 
+    /**
+     * @param $code
+     * @return void
+     */
     public static function abort($code = 404): void
     {
         $allowedCodes = [404, 403, 500];
