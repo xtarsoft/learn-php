@@ -5,6 +5,10 @@ namespace Database\Sql;
 use Core\Response;
 use PDO;
 
+/**
+ * Class Database
+ * @package Database\Sql
+ */
 abstract class Database
 {
     public PDO $connection;

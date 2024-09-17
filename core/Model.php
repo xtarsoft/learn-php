@@ -4,6 +4,10 @@ namespace Core;
 
 use Database\Sql\Database;
 
+/**
+ * Class Model
+ * @package Core
+ */
 abstract class Model extends Database
 {
     /**
