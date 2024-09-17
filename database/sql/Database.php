@@ -37,15 +37,26 @@ abstract class Database
         $this->statement->execute();
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
     public function get()
     {
         return $this->statement->fetchAll();
     }
+
+    /**
+     * @return mixed
+     */
     public function first()
     {
         return $this->statement->fetch();
     }
 
+    /**
+     * @return mixed
+     */
     public function findOrFail()
     {
         $data = $this->statement->fetch();
