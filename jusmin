@@ -1,0 +1,22 @@
+<?php
+require __DIR__ . '/core/commands/responses.php';
+
+if (count($argv) < 2) {
+    echo notFound();
+    exit;
+}
+
+$command = $argv[1];
+$arguments = array_slice($argv, 2);
+
+switch ($command) {
+    case 'new:model';
+    require __DIR__ . '/core/commands/createModel.php';
+    break;
+    case 'new:view';
+    require __DIR__ . '/core/commands/createView.php';
+    break;
+    default:
+        echo notFound();
+        break;
+}

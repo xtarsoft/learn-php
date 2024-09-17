@@ -4,7 +4,7 @@ namespace Core;
 
 use Database\Sql\Database;
 
-class Model extends Database
+abstract class Model extends Database
 {
     protected mixed $config;
 

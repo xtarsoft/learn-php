@@ -5,7 +5,7 @@ namespace Database\Sql;
 use Core\Response;
 use PDO;
 
-class Database
+abstract class Database
 {
     public PDO $connection;
     protected $table;

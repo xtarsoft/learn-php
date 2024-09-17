@@ -4,7 +4,7 @@ namespace Models;
 
 use Core\Model;
 
-class Notes extends Model
+final class Notes extends Model
 {
     protected $table = 'notes';
 }

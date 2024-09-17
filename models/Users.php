@@ -4,7 +4,7 @@ namespace Models;
 
 use Core\Model;
 
-class Users extends Model
+final class Users extends Model
 {
     protected $table = 'users';
 }
