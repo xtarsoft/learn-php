@@ -4,7 +4,14 @@ namespace Models;
 
 use Core\Model;
 
-class Users extends Model
+/**
+ * Class Notes
+ * @package Models
+ */
+final class Users extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'users';
 }

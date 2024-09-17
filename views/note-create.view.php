@@ -9,7 +9,10 @@
                     <div class="mb-4">
                         <label for="body" class="block text-gray-700 text-sm font-bold mb-2">Note</label>
                         <textarea name="body" id="body" cols="30" rows="10" placeholder="Here's an idea for a note..."
-                                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?= htmlspecialchars($_POST['body']) ?? '' ?></textarea>
+                        <?php if (isset($errors['body'])): ?>
+                            <p class="text-red-500 text-xs italic mt-2"><?= $errors['body'] ?></p>
+                        <?php endif; ?>
                         <input name="writer" id="writer" type="hidden" value="John Doe">
                     </div>
                     <div class="flex items center justify-between">

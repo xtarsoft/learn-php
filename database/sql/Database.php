@@ -5,7 +5,11 @@ namespace Database\Sql;
 use Core\Response;
 use PDO;
 
-class Database
+/**
+ * Class Database
+ * @package Database\Sql
+ */
+abstract class Database
 {
     public PDO $connection;
     protected $table;
@@ -37,15 +41,26 @@ class Database
         $this->statement->execute();
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
     public function get()
     {
         return $this->statement->fetchAll();
     }
+
+    /**
+     * @return mixed
+     */
     public function first()
     {
         return $this->statement->fetch();
     }
 
+    /**
+     * @return mixed
+     */
     public function findOrFail()
     {
         $data = $this->statement->fetch();

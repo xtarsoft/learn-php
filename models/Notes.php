@@ -4,7 +4,14 @@ namespace Models;
 
 use Core\Model;
 
-class Notes extends Model
+/**
+ * Class Notes
+ * @package Models
+ */
+final class Notes extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'notes';
 }
