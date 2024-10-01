@@ -1,5 +1,6 @@
 <?php
 
+use Core\Validator;
 use Models\Notes;
 
 $title = 'Create Notes';
@@ -7,14 +8,9 @@ $title = 'Create Notes';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
 
-    if (strlen($_POST['body']) === 0) {
-        $errors['body'] = 'The note body is required';
+    if (! Validator::string($_POST['body'], 1, 1000)) {
+        $errors['body'] = 'The body field is required and must be less than 1000 characters.';
     }
-
-    if (strlen($_POST['body']) > 1000) {
-        $errors['body'] = 'The note body must be less than 1,000 characters';
-    }
-
     if (empty($errors)) {
         $data = [
             'body' => $_POST['body'],
@@ -23,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $table = new Notes();
         $table->create($data);
     }
+
+    header('Location: /notes');
 }
 
 include view('note-create');
