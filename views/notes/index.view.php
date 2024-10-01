@@ -8,7 +8,7 @@
             <?php else: ?>
             <?php foreach ($notes as $note): ?>
                 <li>
-                    <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
+                    <a href="../../public/index.php" class="text-blue-500 hover:underline">
                         <?= htmlspecialchars($note['body']) ?>
                     </a>
                 </li>
