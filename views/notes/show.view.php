@@ -10,6 +10,7 @@
         <p><?= isset($note['body']) ? htmlspecialchars($note['body']) : 'Note load error' ?></p>
 
         <form class="mt-4" method="POST" action="/notes/destroy">
+            <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="id" value="<?= $note['id'] ?>">
             <button class="text-sm text-red-500">Delete</button>
         </form>

@@ -5,7 +5,7 @@
         <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
             <div class="px-4 py-2">
                 <h1 class="text-gray-900 font-bold text-2xl">Create a new note</h1>
-                <form action="/notes/create" method="POST" class="mt-6">
+                <form action="/notes/store" method="POST" class="mt-6">
                     <div class="mb-4">
                         <label for="body" class="block text-gray-700 text-sm font-bold mb-2">Note</label>
                         <textarea name="body" id="body" cols="30" rows="10" placeholder="Here's an idea for a note..."

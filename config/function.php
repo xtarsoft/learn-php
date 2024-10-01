@@ -98,22 +98,6 @@ function auth($condition, int $status = Response::FORBIDDEN): void
 
 /**
  * @param $uri
- * @param $routes
- * @return void
- */
-function route($uri, $routes): void
-{
-    if (array_key_exists($uri, $routes)) {
-        $controller = $routes[$uri];
-        $controller = explode('@', $controller);
-        require base_path("/controllers/{$controller[0]}.php");
-    } else {
-        Response::abort();
-    }
-}
-
-/**
- * @param $uri
  * @param string $class
  * @return string
  */
