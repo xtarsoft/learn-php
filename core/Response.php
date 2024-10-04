@@ -10,10 +10,10 @@ class Response
     public const INTERNAL_SERVER_ERROR = 500;
 
     /**
-     * @param $code
-     * @return void
+     * @param int $code
+     * @return int
      */
-    public static function abort($code = 404): void
+    public static function abort(int $code = 404): int
     {
         $allowedCodes = [404, 403, 500];
         $code = basename($code);
@@ -27,11 +27,9 @@ class Response
 
         if (in_array($code, $allowedCodes)) {
             http_response_code($code);
-            require view($code, 'errors');
-            die();
+            return view("errors.$code",[ 'title' => $title]);
         }
         http_response_code(500);
-        require view('500', 'errors');
-        die();
+        return view("errors.$code",[ 'title' => $title]);
     }
 }

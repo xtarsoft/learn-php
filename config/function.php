@@ -1,20 +1,26 @@
 <?php
 
 use Core\Response;
-use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * @param $value
+ * @return void
+ */
 function dd($value): void
 {
     echo '<pre>';
     var_dump($value);
     echo '</pre>';
-
     die();
 }
 
-function base_path($path = ''): string
+/**
+ * @param string $path
+ * @return string
+ */
+function base_path(string $path = ''): string
 {
-    $rootPath = dirname(__DIR__,1);
+    $rootPath = dirname(__DIR__, 1);
 
     if ($path) {
         return $rootPath . DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR);
@@ -22,7 +28,11 @@ function base_path($path = ''): string
     return $rootPath;
 }
 
-function view_path($path = ''): string
+/**
+ * @param string $path
+ * @return string
+ */
+function view_path(string $path = ''): string
 {
     $viewPath = base_path('views');
 
@@ -32,19 +42,52 @@ function view_path($path = ''): string
     return $viewPath;
 }
 
-function view($file = 'index',$options = ''): string
+/**
+ * @param string $name
+ * @param array $attributes
+ * @return int
+ */
+function view(string $name = 'welcome', array $attributes = []): int
 {
-    $name = basename($file);
-    $file = $name . '.view.php';
-    $viewPath = view_path($options);
-    return $viewPath . DIRECTORY_SEPARATOR . ltrim($file, DIRECTORY_SEPARATOR);
+    $name = explode('.', $name);
+    $viewPath = view_path();
+
+    if (count($name) > 1) {
+        $ignoreLast = array_slice($name, 0, -1);
+        $joinPath = implode(DIRECTORY_SEPARATOR, $ignoreLast);
+
+        $viewPath = view_path($joinPath);
+    }
+
+    $file = end($name). '.view.php';
+    $viewPath = $viewPath . DIRECTORY_SEPARATOR . ltrim($file, DIRECTORY_SEPARATOR);
+
+    if (file_exists($viewPath)) {
+
+        extract($attributes);
+
+        require $viewPath;
+    } else {
+        Response::abort();
+    }
+    return 0;
 }
 
+/**
+ * @param $uri
+ * @return bool
+ */
 function uriIs($uri): bool
 {
     return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === $uri;
 }
-function auth($condition,$status = Response::FORBIDDEN): void
+
+/**
+ * @param $condition
+ * @param int $status
+ * @return void
+ */
+function auth($condition, int $status = Response::FORBIDDEN): void
 {
     if ($condition) {
         Response::abort($status);
@@ -52,18 +95,13 @@ function auth($condition,$status = Response::FORBIDDEN): void
     }
     return;
 }
-function route($uri, $routes): void
-{
-    if (array_key_exists($uri, $routes)) {
-        $controller = $routes[$uri];
-        $controller = explode('@', $controller);
-        require base_path("/controllers/{$controller[0]}.php");
-    } else {
-        Response::abort();
-    }
-}
 
-function navUri($uri, $class = 'bg-gray-900 text-white'): string
+/**
+ * @param $uri
+ * @param string $class
+ * @return string
+ */
+function navUri($uri, string $class = 'bg-gray-900 text-white'): string
 {
     return uriIs($uri) ? $class : 'text-gray-300';
 }

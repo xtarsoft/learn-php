@@ -1,4 +1,3 @@
 <?php
-$title = 'Home Page';
 
-include view('index');
+view('index',['title' => 'Home Page']);

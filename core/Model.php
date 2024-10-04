@@ -60,6 +60,11 @@ abstract class Model extends Database
         $this->query("INSERT INTO {$this->table}", "({$keys}) VALUES ({$values})", $data);
     }
 
+    public function destroy($id): void
+    {
+        $this->query("DELETE FROM {$this->table} ", "WHERE id = :id", ['id' => $id]);
+    }
+
     /**
      * @param $table
      * @param $foreign_key

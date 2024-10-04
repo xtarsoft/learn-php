@@ -1,4 +1,3 @@
 <?php
-$title = 'About Page';
 
-include view('about');
+view('about',['title' => 'About Page']);

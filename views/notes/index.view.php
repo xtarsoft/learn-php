@@ -6,13 +6,13 @@
             <?php if (empty($notes)): ?>
                 <li>No notes found.</li>
             <?php else: ?>
-            <?php foreach ($notes as $note): ?>
-                <li>
-                    <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
-                        <?= htmlspecialchars($note['body']) ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
+                <?php foreach ($notes as $note): ?>
+                    <li>
+                        <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
+                            <?= htmlspecialchars($note['body']) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             <?php endif; ?>
         </ul>
         <p class="mt-6">

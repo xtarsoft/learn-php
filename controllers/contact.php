@@ -1,4 +1,3 @@
 <?php
-$title = 'Contact Page';
 
-include view('contact');
+view('contact',['title' => 'Contact Page']);
