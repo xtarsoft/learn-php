@@ -8,11 +8,16 @@ $router = new Router();
 
 $router->get('/','index');
 $router->get('/about','about');
-$router->get('/notes','notes/index');
-$router->get('/note','notes/show');
-$router->get('/notes/create','notes/create');
-$router->post('/notes/store','notes/store');
+
+//Note Controller
+$router->get('/notes','notes/index'); //R(Read All)
+$router->get('/note','notes/show'); //R(Read {id})
+$router->get('/notes/create','notes/create'); //Get Create Form
+$router->post('/notes/store','notes/store'); // C(Create)
+$router->get('/notes/edit','notes/edit'); //Get Edit Form
+$router->patch('/notes/update','notes/update'); //U(Update)
 $router->delete('/notes/destroy','notes/destroy');
+
 $router->get('/contact','contact');
 
 $router->route($uri, $method);
