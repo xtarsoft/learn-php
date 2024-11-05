@@ -11,6 +11,7 @@ $router = new Router();
 $router->get('/register','registration/create');
 $router->post('/register','registration/store');
 
+$router->post('/login','auth/login');
 $router->get('/logout','auth/logout');
 
 $router->get('/','index');

@@ -53,7 +53,7 @@
                             </div>
                         <?php else: ?>
                             <div>
-                                <a href="/login"
+                                <a href="/"
                                    class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">login</a>
                                 <a href="/register"
                                    class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">register</a>
