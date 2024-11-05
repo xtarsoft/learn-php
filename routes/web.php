@@ -2,9 +2,16 @@
 
 use Core\Router;
 
+session_start();
+
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 $router = new Router();
+
+$router->get('/register','registration/create');
+$router->post('/register','registration/store');
+
+$router->get('/logout','auth/logout');
 
 $router->get('/','index');
 $router->get('/about','about');
