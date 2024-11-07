@@ -2,6 +2,8 @@
 
 namespace Core\Middleware;
 
+use Core\Response;
+
 class Guest
 {
     /**
@@ -10,7 +12,7 @@ class Guest
     public function handle(): void
     {
         if ($_SESSION['user'] ?? false) {
-            header('Location: /');
+            Response::redirect('/');
             exit;
         }
     }

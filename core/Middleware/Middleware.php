@@ -21,7 +21,7 @@ class Middleware
         $middleware = static::MAP[$key] ?? false;
 
         if(!$middleware) {
-            echo json_encode(['error' => "Middleware '{$key}' is not defined."]);
+            echo json_encode(['error' => "Middleware '$key' is not defined."]);
             exit;
         }
 
