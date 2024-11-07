@@ -28,7 +28,7 @@ function refactorName(string $name): string
 
 if (count($arguments) < 1) {
     echo warning('Please provide a model name');
-    echo info('Example: php jusmin new:model <model_name>');
+    echo info('Example: php justin new:model <model_name>');
     exit(1);
 }
 

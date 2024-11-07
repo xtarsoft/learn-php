@@ -3,6 +3,8 @@
 $commandSupport = [
     'new:view' => 'Create a new view file',
     'new:model' => 'Create a new model file',
+    'serve | dev' => 'Run the PHP built-in server with 8000 port',
+    'serve --port | dev --port' => 'Run the PHP built-in server with custom port',
 ];
 
 /**
