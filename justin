@@ -16,6 +16,10 @@ switch ($command) {
     case 'new:view';
     require __DIR__ . '/core/commands/createView.php';
     break;
+    case 'serve';
+    case 'dev';
+        require __DIR__ . '/core/commands/serve.php';
+        break;
     default:
         echo notFound();
         break;

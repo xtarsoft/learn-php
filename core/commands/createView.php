@@ -17,7 +17,7 @@ HTML;
 
 if (count($arguments) < 1) {
     echo warning('Please provide a view name');
-    echo info('Example: php jusmin new:view <view_name>');
+    echo info('Example: php justin new:view <view_name>');
     exit(1);
 }
 
