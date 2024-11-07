@@ -32,4 +32,14 @@ class Response
         http_response_code(500);
         return view("errors.$code",[ 'title' => $title]);
     }
+
+    /**
+     * @param string $path
+     * @return int
+     */
+    public static function redirect(string $path = '/'): int
+    {
+        header("Location: $path");
+        return 0;
+    }
 }

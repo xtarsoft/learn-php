@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Middleware\Middleware;
+
 class Router
 {
     protected $routes = [];
@@ -10,66 +12,78 @@ class Router
      * @param $method
      * @param $uri
      * @param $controller
-     * @return void
+     * @return Router
      */
-    public function add($method, $uri, $controller): void
+    public function add($method, $uri, $controller): Router
     {
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            'middleware' => null
         ];
+        return $this;
     }
 
     /**
      * @param $uri
      * @param $controller
-     * @return void
+     * @return Router
      */
-    public function get($uri, $controller): void
+    public function get($uri, $controller): Router
     {
-        $this->add('GET', $uri, $controller);
+        return $this->add('GET', $uri, $controller);
 
     }
 
     /**
      * @param $uri
      * @param $controller
-     * @return void
+     * @return Router
      */
-    public function post($uri, $controller): void
+    public function post($uri, $controller): Router
     {
-        $this->add('POST', $uri, $controller);
+        return $this->add('POST', $uri, $controller);
     }
 
     /**
      * @param $uri
      * @param $controller
-     * @return void
+     * @return Router
      */
-    public function delete($uri, $controller): void
+    public function delete($uri, $controller): Router
     {
-        $this->add('DELETE', $uri, $controller);
+        return $this->add('DELETE', $uri, $controller);
     }
 
     /**
      * @param $uri
      * @param $controller
-     * @return void
+     * @return Router
      */
-    public function patch($uri, $controller): void
+    public function patch($uri, $controller): Router
     {
-        $this->add('PATCH', $uri, $controller);
+        return $this->add('PATCH', $uri, $controller);
     }
 
     /**
      * @param $uri
      * @param $controller
-     * @return void
+     * @return Router
      */
-    public function put($uri, $controller): void
+    public function put($uri, $controller): Router
     {
-        $this->add('PUT', $uri, $controller);
+        return $this->add('PUT', $uri, $controller);
+    }
+
+    /**
+     * @param $key
+     * @return Router
+     */
+    public function only($key): Router
+    {
+        $this->routes[array_key_last($this->routes)]['middleware'] = $key;
+        return $this;
     }
 
     /**
@@ -82,6 +96,9 @@ class Router
         foreach ($this->routes as $route)
         {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+
+                Middleware::resolve($route['middleware']);
+
                 return require base_path("/controllers/{$route['controller']}.php");
             }
         }
